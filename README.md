@@ -3,8 +3,8 @@
 
 v1.00:
 
-displayed circles - each circle represents one celestial body
+- displayed circles - each circle represents one celestial body
 
 v1.01
 
-added name of each celestial body inside its circle representation
+- added name of each celestial body inside its circle representation
