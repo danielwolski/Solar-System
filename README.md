@@ -8,3 +8,11 @@ v1.00:
 v1.01
 
 - added name of each celestial body inside its circle representation
+
+v1.02
+TODO:
+- implement basic Moon rotation around Earth
+
+v1.1
+TODO:
+- modified the movement of Moon so that it is based on physics law and mass of each object
