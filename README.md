@@ -15,4 +15,4 @@ TODO:
 
 v1.1
 TODO:
-- modified the movement of Moon so that it is based on physics law and mass of each object
+- modified the movement of Moon so that it is based on mass each object
