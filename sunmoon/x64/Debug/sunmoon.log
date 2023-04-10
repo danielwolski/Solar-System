@@ -1,0 +1,4 @@
+﻿  Źródło.cpp
+C:\Users\logix\Desktop\sunmoon\Solar-System\sunmoon\Źródło.cpp(29,70): warning C4267: "argument": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\logix\Desktop\sunmoon\Solar-System\sunmoon\Źródło.cpp(34,60): warning C4267: "argument": konwersja z "size_t" do "int", możliwa utrata danych
+  sunmoon.vcxproj -> C:\Users\logix\Desktop\sunmoon\Solar-System\x64\Debug\sunmoon.exe

@@ -1,6 +1,7 @@
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:WinMainCRTStartup")
 
 #include <Windows.h>
+#include <cmath>
 
 // Data structure representing a celestial body
 struct celestial_body {
@@ -40,20 +41,45 @@ void draw_celestial_body(HDC hdc, celestial_body body) {
     DeleteObject(brush);
 }
 
+
+//definecelestial bodies
+celestial_body earth = { 200, 200, 100, RGB(0, 0, 255), L"Earth" };
+celestial_body moon = { 350, 250, 25, RGB(200, 200, 200), L"Moon" };
+
+
 // Window message handling function
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    // Define the Earth and Moon
-    celestial_body earth = { 200, 200, 100, RGB(0, 0, 255), L"Earth" };
-    celestial_body moon = { 350, 250, 25, RGB(200, 200, 200), L"Moon" };
+    static double angle = 0;
 
     switch (uMsg)
     {
+    case WM_CREATE:
+        // Set a timer to update the moon's position
+        SetTimer(hwnd, 1, 20, nullptr);
+        break;
+    case WM_TIMER:
+    {
+        // Update the moon's position
+        angle += 1;
+        double angle_radians = angle * (3.14159265358979323846 / 180);
+        moon.x = earth.x + static_cast<int>(150 * cos(angle_radians));
+        moon.y = earth.y + static_cast<int>(150 * sin(angle_radians));
+
+        // Redraw the window
+        InvalidateRect(hwnd, nullptr, true);
+        break;
+    }
     case WM_PAINT:
     {
         // Initialize GDI
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hwnd, &ps);
+
+        // Fill the background with black color
+        HBRUSH blackBrush = CreateSolidBrush(RGB(0, 0, 0));
+        FillRect(hdc, &ps.rcPaint, blackBrush);
+        DeleteObject(blackBrush);
 
         // Draw the Earth and Moon
         draw_celestial_body(hdc, earth);
