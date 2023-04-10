@@ -12,7 +12,7 @@ v1.01
 v1.02
 - implement basic Moon rotation around Earth
 
-v.103
+v.1.03
 TODO:
 - implement line presenting the orbit of the Moon
 
