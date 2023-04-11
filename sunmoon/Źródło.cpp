@@ -11,6 +11,17 @@ struct celestial_body {
     const wchar_t* name; // Name of celestial body
 };
 
+// Function to draw predicted orbit
+void draw_predicted_orbit(HDC hdc, celestial_body center, int orbit_radius) {
+    HPEN orbitPen = CreatePen(PS_SOLID, 1, RGB(255, 255, 255));
+    HPEN oldPen = (HPEN)SelectObject(hdc, orbitPen);
+
+    Arc(hdc, center.x - orbit_radius, center.y - orbit_radius, center.x + orbit_radius, center.y + orbit_radius, 0, 0, 0, 0);
+
+    SelectObject(hdc, oldPen);
+    DeleteObject(orbitPen);
+}
+
 // Function to draw a celestial body
 void draw_celestial_body(HDC hdc, celestial_body body) {
     HPEN pen = CreatePen(PS_SOLID, 2, body.color);
@@ -80,6 +91,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         HBRUSH blackBrush = CreateSolidBrush(RGB(0, 0, 0));
         FillRect(hdc, &ps.rcPaint, blackBrush);
         DeleteObject(blackBrush);
+
+        // Draw predicted orbit
+        draw_predicted_orbit(hdc, earth, 150);
 
         // Draw the Earth and Moon
         draw_celestial_body(hdc, earth);
