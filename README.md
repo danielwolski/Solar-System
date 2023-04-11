@@ -9,11 +9,8 @@ v1.01
 
 - added name of each celestial body inside its circle representation
 
-v1.02
+v1.02*
 - implement basic Moon rotation around Earth
-
-v.1.03
-TODO:
 - implement line presenting the orbit of the Moon
 
 v1.1
