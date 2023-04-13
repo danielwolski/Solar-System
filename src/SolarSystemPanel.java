@@ -3,29 +3,65 @@ import java.awt.*;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SolarSystemPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
-    private double zoomFactor = 1;
+    private Point lastDragPoint;
+    private int offsetX = 0;
+    private int offsetY = 0;
+    private double zoomFactor = 0.1;
 
-    CelestialBody earth = new CelestialBody(200, 200, 100, Color.BLUE, "Earth");
-    CelestialBody moon = new CelestialBody(350, 250, 25, new Color(200, 200, 200), "Moon");
+    CelestialBody earth = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Earth.SUN_EARTH_DISTANCE, CelestialConstants.Sun.Y,
+            CelestialConstants.Earth.MASS, CelestialConstants.Earth.RADIUS, CelestialConstants.Earth.COLOR, CelestialConstants.Earth.NAME, CelestialConstants.Earth.ROTATION_SPEED);
+    CelestialBody moon = new CelestialBody(earth.getX() + CelestialConstants.Moon.EARTH_MOON_DISTANCE, earth.getY(),
+            CelestialConstants.Moon.MASS, CelestialConstants.Moon.RADIUS, CelestialConstants.Moon.COLOR, CelestialConstants.Moon.NAME, CelestialConstants.Moon.ROTATION_SPEED);
+    CelestialBody sun = new CelestialBody(CelestialConstants.Sun.X, CelestialConstants.Sun.Y,
+            CelestialConstants.Sun.MASS, CelestialConstants.Sun.RADIUS, CelestialConstants.Sun.COLOR, CelestialConstants.Sun.NAME, CelestialConstants.Sun.ROTATION_SPEED);
 
     public SolarSystemPanel() {
+
+        // Set the background color to black
+        setBackground(Color.BLACK);
+
+        //zooming in and out
         addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
-                double delta = 0.1 * e.getPreciseWheelRotation();
+                double delta = 0.04 * e.getPreciseWheelRotation();
                 zoomFactor += delta;
                 repaint();
             }
         });
+
+        //dragging the view
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                lastDragPoint = e.getPoint();
+            }
+        });
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                int dx = (int) ((e.getX() - lastDragPoint.getX()) / zoomFactor);
+                int dy = (int) ((e.getY() - lastDragPoint.getY()) / zoomFactor);
+                offsetX += dx;
+                offsetY += dy;
+                lastDragPoint = e.getPoint();
+                repaint();
+            }
+        });
+
+        //initial view
+        initializeOffset();
     }
 
-    public void updateMoonPosition(double xOffset, double yOffset) {
-        moon.setX(earth.getX() + (int) xOffset);
-        moon.setY(earth.getY() + (int) yOffset);
+    public void updateOrbitingBodyPosition(CelestialBody bodyOrbiting, CelestialBody bodyOrbited, double xOffset, double yOffset) {
+        bodyOrbiting.setX(bodyOrbited.getX() + (int) xOffset);
+        bodyOrbiting.setY(bodyOrbited.getY() + (int) yOffset);
     }
 
     @Override
@@ -36,16 +72,18 @@ public class SolarSystemPanel extends JPanel {
         // Apply zoom factor
         g2d.scale(zoomFactor, zoomFactor);
 
-        // Fill the background with black color
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
+        // Apply the offset (move the user's view)
+        g2d.translate(offsetX, offsetY);
 
-        // Draw predicted orbit
-        drawPredictedOrbit(g2d, earth, 150);
+        // Draw orbits
+        drawPredictedOrbit(g2d, earth, CelestialConstants.Moon.EARTH_MOON_DISTANCE);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Earth.SUN_EARTH_DISTANCE);
 
-        // Draw the Earth and Moon
+        // Draw bodies
         drawCelestialBody(g2d, earth);
         drawCelestialBody(g2d, moon);
+        drawCelestialBody(g2d, sun);
+
     }
 
     private void drawPredictedOrbit(Graphics2D g2d, CelestialBody center, int orbitRadius) {
@@ -59,8 +97,8 @@ public class SolarSystemPanel extends JPanel {
                 body.getRadius() * 2, body.getRadius() * 2);
         g2d.fill(shape);
 
-        g2d.setColor(Color.WHITE);
-        g2d.setFont(new Font("Arial", Font.PLAIN, 20));
+        g2d.setColor(Color.BLACK);
+        g2d.setFont(new Font("Arial", Font.PLAIN, body.getRadius()/2));
         FontMetrics fm = g2d.getFontMetrics();
         int textWidth = fm.stringWidth(body.getName());
         int textHeight = fm.getHeight();
@@ -69,5 +107,18 @@ public class SolarSystemPanel extends JPanel {
         int textY = body.getY() - textHeight / 2 + fm.getAscent();
 
         g2d.drawString(body.getName(), textX, textY);
+    }
+
+    public int getWidth() {
+        return (int) (super.getWidth() / zoomFactor);
+    }
+
+    public int getHeight() {
+        return (int) (super.getHeight() / zoomFactor);
+    }
+
+    private void initializeOffset() {
+        offsetX = (sun.getX());
+        offsetY = (sun.getY()/2);
     }
 }
