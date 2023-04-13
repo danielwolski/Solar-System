@@ -6,20 +6,24 @@ public class SolarSystemSimulation {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Solar System Simulation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(640, 480);
+        frame.setSize(1600, 1200);
 
         SolarSystemPanel panel = new SolarSystemPanel();
         frame.add(panel);
         frame.setVisible(true);
 
-        Timer timer = new Timer(20, new ActionListener() {
-            double angle = 0;
+        Timer timer = new Timer(50, new ActionListener() {
+            double earthAngle = 0;
+            double moonAngle = 0;
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                angle += 1;
-                double angleRadians = Math.toRadians(angle);
-                panel.updateMoonPosition(150 * Math.cos(angleRadians), 150 * Math.sin(angleRadians));
+                earthAngle += panel.earth.getRotationSpeed();
+                moonAngle += panel.moon.getRotationSpeed();
+                double earthAngleRadians = Math.toRadians(earthAngle);
+                double moonAngleRadians = Math.toRadians(moonAngle);
+                panel.updateOrbitingBodyPosition(panel.moon, panel.earth, CelestialConstants.Moon.EARTH_MOON_DISTANCE * Math.cos(moonAngleRadians), CelestialConstants.Moon.EARTH_MOON_DISTANCE * Math.sin(moonAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.earth, panel.sun, CelestialConstants.Earth.SUN_EARTH_DISTANCE * Math.cos(earthAngleRadians), CelestialConstants.Earth.SUN_EARTH_DISTANCE * Math.sin(earthAngleRadians));
                 panel.repaint();
             }
         });
