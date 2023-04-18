@@ -5,16 +5,16 @@ public class CelestialBody {
     private int radius;
     private Color color;
     private String name;
-    private double rotation_speed;
+    private double orbital_speed;
 
-    public CelestialBody(int x, int y, int mass, int radius, Color color, String name, double rotation_speed) {
+    public CelestialBody(int x, int y, int mass, int radius, Color color, String name, double orbital_speed) {
         this.x = x;
         this.y = y;
         this.mass = mass;
         this.radius = radius;
         this.color = color;
         this.name = name;
-        this.rotation_speed = rotation_speed;
+        this.orbital_speed = orbital_speed;
     }
     public int getX() {
         return x;
@@ -60,7 +60,7 @@ public class CelestialBody {
         this.name = name;
     }
 
-    public double getRotationSpeed() {return rotation_speed;}
+    public double getOrbitalSpeed() {return orbital_speed;}
 
-    public void setRotationSpeed() {this.rotation_speed = rotation_speed;}
+    public void setOrbitalSpeed() {this.orbital_speed = orbital_speed;}
 }
