@@ -47,7 +47,6 @@ public class SolarSystemPanel extends JPanel {
         setBackground(Color.BLACK);
 
         // Zooming in and out
-        // Zooming in and out
         addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
@@ -58,8 +57,7 @@ public class SolarSystemPanel extends JPanel {
             }
         });
 
-
-        //dragging the view
+        //Dragging the view
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -78,7 +76,7 @@ public class SolarSystemPanel extends JPanel {
             }
         });
 
-        //initial view
+        //Initial view
         initializeOffset();
     }
 
@@ -130,6 +128,7 @@ public class SolarSystemPanel extends JPanel {
         g.drawLine(centerX, centerY - 1, centerX, centerY + 1);
     }
 
+    // Draw orbit on which celestial body moves
     private void drawPredictedOrbit(Graphics2D g2d, CelestialBody center, int orbitRadius) {
         g2d.setColor(Color.WHITE);
         g2d.drawOval(center.getX() - orbitRadius, center.getY() - orbitRadius, orbitRadius * 2, orbitRadius * 2);
