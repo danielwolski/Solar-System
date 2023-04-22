@@ -46,15 +46,15 @@ public class SolarSystemSimulation {
                 double uranusAngleRadians = Math.toRadians(uranusAngle);
                 double neptuneAngleRadians = Math.toRadians(neptuneAngle);
 
-                panel.updateOrbitingBodyPosition(panel.moon, panel.earth, CelestialConstants.Moon.EARTH_MOON_DISTANCE * Math.cos(moonAngleRadians), CelestialConstants.Moon.EARTH_MOON_DISTANCE * Math.sin(moonAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.earth, panel.sun, CelestialConstants.Earth.SUN_EARTH_DISTANCE * Math.cos(earthAngleRadians), CelestialConstants.Earth.SUN_EARTH_DISTANCE * Math.sin(earthAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.mercury, panel.sun, CelestialConstants.Mercury.SUN_MERCURY_DISTANCE * Math.cos(mercuryAngleRadians), CelestialConstants.Mercury.SUN_MERCURY_DISTANCE * Math.sin(mercuryAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.venus, panel.sun, CelestialConstants.Venus.SUN_VENUS_DISTANCE * Math.cos(venusAngleRadians), CelestialConstants.Venus.SUN_VENUS_DISTANCE * Math.sin(venusAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.mars, panel.sun, CelestialConstants.Mars.SUN_MARS_DISTANCE * Math.cos(marsAngleRadians), CelestialConstants.Mars.SUN_MARS_DISTANCE * Math.sin(marsAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.jupiter, panel.sun, CelestialConstants.Jupiter.SUN_JUPITER_DISTANCE * Math.cos(jupiterAngleRadians), CelestialConstants.Jupiter.SUN_JUPITER_DISTANCE * Math.sin(jupiterAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.saturn, panel.sun, CelestialConstants.Saturn.SUN_SATURN_DISTANCE * Math.cos(saturnAngleRadians), CelestialConstants.Saturn.SUN_SATURN_DISTANCE * Math.sin(saturnAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.uranus, panel.sun, CelestialConstants.Uranus.SUN_URANUS_DISTANCE * Math.cos(uranusAngleRadians), CelestialConstants.Uranus.SUN_URANUS_DISTANCE * Math.sin(uranusAngleRadians));
-                panel.updateOrbitingBodyPosition(panel.neptune, panel.sun, CelestialConstants.Neptune.SUN_NEPTUNE_DISTANCE * Math.cos(neptuneAngleRadians), CelestialConstants.Neptune.SUN_NEPTUNE_DISTANCE * Math.sin(neptuneAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.moon, panel.earth, CelestialConstants.Moon.DISTANCE_FROM_PARENT * Math.cos(moonAngleRadians), CelestialConstants.Moon.DISTANCE_FROM_PARENT * Math.sin(moonAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.earth, panel.sun, CelestialConstants.Earth.DISTANCE_FROM_PARENT * Math.cos(earthAngleRadians), CelestialConstants.Earth.DISTANCE_FROM_PARENT * Math.sin(earthAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.mercury, panel.sun, CelestialConstants.Mercury.DISTANCE_FROM_PARENT * Math.cos(mercuryAngleRadians), CelestialConstants.Mercury.DISTANCE_FROM_PARENT * Math.sin(mercuryAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.venus, panel.sun, CelestialConstants.Venus.DISTANCE_FROM_PARENT * Math.cos(venusAngleRadians), CelestialConstants.Venus.DISTANCE_FROM_PARENT * Math.sin(venusAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.mars, panel.sun, CelestialConstants.Mars.DISTANCE_FROM_PARENT * Math.cos(marsAngleRadians), CelestialConstants.Mars.DISTANCE_FROM_PARENT * Math.sin(marsAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.jupiter, panel.sun, CelestialConstants.Jupiter.DISTANCE_FROM_PARENT * Math.cos(jupiterAngleRadians), CelestialConstants.Jupiter.DISTANCE_FROM_PARENT * Math.sin(jupiterAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.saturn, panel.sun, CelestialConstants.Saturn.DISTANCE_FROM_PARENT * Math.cos(saturnAngleRadians), CelestialConstants.Saturn.DISTANCE_FROM_PARENT * Math.sin(saturnAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.uranus, panel.sun, CelestialConstants.Uranus.DISTANCE_FROM_PARENT * Math.cos(uranusAngleRadians), CelestialConstants.Uranus.DISTANCE_FROM_PARENT * Math.sin(uranusAngleRadians));
+                panel.updateOrbitingBodyPosition(panel.neptune, panel.sun, CelestialConstants.Neptune.DISTANCE_FROM_PARENT * Math.cos(neptuneAngleRadians), CelestialConstants.Neptune.DISTANCE_FROM_PARENT * Math.sin(neptuneAngleRadians));
                 panel.repaint();
             }
         });

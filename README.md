@@ -25,3 +25,8 @@ v1.2
 - Added all lacking planets of solar system
 - Changes in zoom in/out functionality
 - Sizes of planets are now scaled according to reality
+
+v1.21
+- standardization of constant describing distance from parent planet,
+it is a preparatory step to implement cleaner management of declaring
+celestial bodies and drawing them/their orbits.

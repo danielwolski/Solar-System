@@ -20,25 +20,25 @@ public class SolarSystemPanel extends JPanel {
     private double targetZoomFactor = zoomFactor;
     private Timer zoomAnimationTimer;
 
-    CelestialBody earth = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Earth.SUN_EARTH_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody earth = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Earth.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Earth.MASS, CelestialConstants.Earth.RADIUS, CelestialConstants.Earth.COLOR, CelestialConstants.Earth.NAME, CelestialConstants.Earth.ORBITAL_SPEED);
-    CelestialBody moon = new CelestialBody(earth.getX() + CelestialConstants.Moon.EARTH_MOON_DISTANCE, earth.getY(),
+    CelestialBody moon = new CelestialBody(earth.getX() + CelestialConstants.Moon.DISTANCE_FROM_PARENT, earth.getY(),
             CelestialConstants.Moon.MASS, CelestialConstants.Moon.RADIUS, CelestialConstants.Moon.COLOR, CelestialConstants.Moon.NAME, CelestialConstants.Moon.ORBITAL_SPEED);
     CelestialBody sun = new CelestialBody(CelestialConstants.Sun.X, CelestialConstants.Sun.Y,
             CelestialConstants.Sun.MASS, CelestialConstants.Sun.RADIUS, CelestialConstants.Sun.COLOR, CelestialConstants.Sun.NAME, CelestialConstants.Sun.ORBITAL_SPEED);
-    CelestialBody mercury = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Mercury.SUN_MERCURY_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody mercury = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Mercury.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Mercury.MASS, CelestialConstants.Mercury.RADIUS, CelestialConstants.Mercury.COLOR, CelestialConstants.Mercury.NAME, CelestialConstants.Mercury.ORBITAL_SPEED);
-    CelestialBody venus = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Venus.SUN_VENUS_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody venus = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Venus.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Venus.MASS, CelestialConstants.Venus.RADIUS, CelestialConstants.Venus.COLOR, CelestialConstants.Venus.NAME, CelestialConstants.Venus.ORBITAL_SPEED);
-    CelestialBody mars = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Mars.SUN_MARS_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody mars = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Mars.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Mars.MASS, CelestialConstants.Mars.RADIUS, CelestialConstants.Mars.COLOR, CelestialConstants.Mars.NAME, CelestialConstants.Mars.ORBITAL_SPEED);
-    CelestialBody jupiter = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Jupiter.SUN_JUPITER_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody jupiter = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Jupiter.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Jupiter.MASS, CelestialConstants.Jupiter.RADIUS, CelestialConstants.Jupiter.COLOR, CelestialConstants.Jupiter.NAME, CelestialConstants.Jupiter.ORBITAL_SPEED);
-    CelestialBody saturn = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Saturn.SUN_SATURN_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody saturn = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Saturn.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Saturn.MASS, CelestialConstants.Saturn.RADIUS, CelestialConstants.Saturn.COLOR, CelestialConstants.Saturn.NAME, CelestialConstants.Saturn.ORBITAL_SPEED);
-    CelestialBody uranus = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Uranus.SUN_URANUS_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody uranus = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Uranus.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Uranus.MASS, CelestialConstants.Uranus.RADIUS, CelestialConstants.Uranus.COLOR, CelestialConstants.Uranus.NAME, CelestialConstants.Uranus.ORBITAL_SPEED);
-    CelestialBody neptune = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Neptune.SUN_NEPTUNE_DISTANCE, CelestialConstants.Sun.Y,
+    CelestialBody neptune = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Neptune.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
             CelestialConstants.Neptune.MASS, CelestialConstants.Neptune.RADIUS, CelestialConstants.Neptune.COLOR, CelestialConstants.Neptune.NAME, CelestialConstants.Neptune.ORBITAL_SPEED);
 
     public SolarSystemPanel() {
@@ -97,15 +97,15 @@ public class SolarSystemPanel extends JPanel {
         g2d.translate(offsetX, offsetY);
 
         // Draw orbits
-        drawPredictedOrbit(g2d, earth, CelestialConstants.Moon.EARTH_MOON_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Earth.SUN_EARTH_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Mercury.SUN_MERCURY_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Venus.SUN_VENUS_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Mars.SUN_MARS_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Jupiter.SUN_JUPITER_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Saturn.SUN_SATURN_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Uranus.SUN_URANUS_DISTANCE);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Neptune.SUN_NEPTUNE_DISTANCE);
+        drawPredictedOrbit(g2d, earth, CelestialConstants.Moon.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Earth.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Mercury.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Venus.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Mars.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Jupiter.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Saturn.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Uranus.DISTANCE_FROM_PARENT);
+        drawPredictedOrbit(g2d, sun, CelestialConstants.Neptune.DISTANCE_FROM_PARENT);
 
         // Draw bodies
         drawCelestialBody(g2d, earth);
