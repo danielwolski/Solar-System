@@ -22,6 +22,8 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT = 5791/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Mercury";
         public static final double ORBITAL_SPEED = 0.14/SLOWDOWN_FACTOR;
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
     }
 
     public static class Venus {
@@ -31,15 +33,21 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT = 10821/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Venus";
         public static final double ORBITAL_SPEED = 0.16/SLOWDOWN_FACTOR;
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
     }
 
     public static class Earth {
+        public static final int DISTANCE_FROM_PARENT = 14960/LOWER_DISTANCE_FACTOR ;
+        public static final int X = Sun.X + DISTANCE_FROM_PARENT;
+        public static final int Y = Sun.Y;
         public static final int MASS = 50000;
         public static final int RADIUS = 63;
         public static final Color COLOR = Color.BLUE;
-        public static final int DISTANCE_FROM_PARENT = 14960/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Earth";
         public static final double ORBITAL_SPEED = 0.18/SLOWDOWN_FACTOR;
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
     }
 
     public static class Mars {
@@ -49,7 +57,11 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT= 22794/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Mars";
         public static final double ORBITAL_SPEED = 0.2/SLOWDOWN_FACTOR;
-    }
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
+        public static final int X = Sun.X + DISTANCE_FROM_PARENT;
+        public static final int Y = Sun.Y;
+     }
 
     public static class Jupiter {
         public static final int MASS = 50000;
@@ -58,7 +70,11 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT = 77834/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Jupiter";
         public static final double ORBITAL_SPEED = 0.22/SLOWDOWN_FACTOR;
-    }
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
+        public static final int X = Sun.X + DISTANCE_FROM_PARENT;
+        public static final int Y = Sun.Y;
+      }
 
     public static class Saturn {
         public static final int MASS = 50000;
@@ -67,7 +83,11 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT = 142701/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Saturn";
         public static final double ORBITAL_SPEED = 0.24/SLOWDOWN_FACTOR;
-    }
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
+        public static final int X = Sun.X + DISTANCE_FROM_PARENT;
+        public static final int Y = Sun.Y;
+     }
 
     public static class Uranus {
         public static final int MASS = 50000;
@@ -76,6 +96,10 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT = 28709/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Uranus";
         public static final double ORBITAL_SPEED = 0.23/SLOWDOWN_FACTOR;
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
+        public static final int X = Sun.X + DISTANCE_FROM_PARENT;
+        public static final int Y = Sun.Y;
     }
 
     public static class Neptune {
@@ -85,7 +109,11 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT = 44982/LOWER_DISTANCE_FACTOR ;
         public static final String NAME = "Neptune";
         public static final double ORBITAL_SPEED = 0.26/SLOWDOWN_FACTOR;
-    }
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
+        public static final int X = Sun.X + DISTANCE_FROM_PARENT;
+        public static final int Y = Sun.Y;
+     }
 
     public static class Moon {
         public static final int MASS = 10000;
@@ -94,5 +122,9 @@ public class CelestialConstants {
         public static final int DISTANCE_FROM_PARENT = 90;
         public static final String NAME = "Moon";
         public static final double ORBITAL_SPEED = 0.11/SLOWDOWN_FACTOR;
+        public static final int ORBIT_CENTER_X = CelestialConstants.Sun.X;
+        public static final int ORBIT_CENTER_Y = CelestialConstants.Sun.Y;
+        public static final int X = Earth.X + DISTANCE_FROM_PARENT;
+        public static final int Y = Earth.Y;
     }
 }

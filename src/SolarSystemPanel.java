@@ -18,30 +18,25 @@ public class SolarSystemPanel extends JPanel {
     private int offsetY = 0;
     private double zoomFactor = 0.08;
     private double targetZoomFactor = zoomFactor;
-    private Timer zoomAnimationTimer;
+    CelestialBody[] celestialBodies;
 
-    CelestialBody earth = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Earth.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Earth.MASS, CelestialConstants.Earth.RADIUS, CelestialConstants.Earth.COLOR, CelestialConstants.Earth.NAME, CelestialConstants.Earth.ORBITAL_SPEED);
-    CelestialBody moon = new CelestialBody(earth.getX() + CelestialConstants.Moon.DISTANCE_FROM_PARENT, earth.getY(),
-            CelestialConstants.Moon.MASS, CelestialConstants.Moon.RADIUS, CelestialConstants.Moon.COLOR, CelestialConstants.Moon.NAME, CelestialConstants.Moon.ORBITAL_SPEED);
-    CelestialBody sun = new CelestialBody(CelestialConstants.Sun.X, CelestialConstants.Sun.Y,
-            CelestialConstants.Sun.MASS, CelestialConstants.Sun.RADIUS, CelestialConstants.Sun.COLOR, CelestialConstants.Sun.NAME, CelestialConstants.Sun.ORBITAL_SPEED);
-    CelestialBody mercury = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Mercury.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Mercury.MASS, CelestialConstants.Mercury.RADIUS, CelestialConstants.Mercury.COLOR, CelestialConstants.Mercury.NAME, CelestialConstants.Mercury.ORBITAL_SPEED);
-    CelestialBody venus = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Venus.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Venus.MASS, CelestialConstants.Venus.RADIUS, CelestialConstants.Venus.COLOR, CelestialConstants.Venus.NAME, CelestialConstants.Venus.ORBITAL_SPEED);
-    CelestialBody mars = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Mars.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Mars.MASS, CelestialConstants.Mars.RADIUS, CelestialConstants.Mars.COLOR, CelestialConstants.Mars.NAME, CelestialConstants.Mars.ORBITAL_SPEED);
-    CelestialBody jupiter = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Jupiter.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Jupiter.MASS, CelestialConstants.Jupiter.RADIUS, CelestialConstants.Jupiter.COLOR, CelestialConstants.Jupiter.NAME, CelestialConstants.Jupiter.ORBITAL_SPEED);
-    CelestialBody saturn = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Saturn.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Saturn.MASS, CelestialConstants.Saturn.RADIUS, CelestialConstants.Saturn.COLOR, CelestialConstants.Saturn.NAME, CelestialConstants.Saturn.ORBITAL_SPEED);
-    CelestialBody uranus = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Uranus.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Uranus.MASS, CelestialConstants.Uranus.RADIUS, CelestialConstants.Uranus.COLOR, CelestialConstants.Uranus.NAME, CelestialConstants.Uranus.ORBITAL_SPEED);
-    CelestialBody neptune = new CelestialBody(CelestialConstants.Sun.X + CelestialConstants.Neptune.DISTANCE_FROM_PARENT, CelestialConstants.Sun.Y,
-            CelestialConstants.Neptune.MASS, CelestialConstants.Neptune.RADIUS, CelestialConstants.Neptune.COLOR, CelestialConstants.Neptune.NAME, CelestialConstants.Neptune.ORBITAL_SPEED);
+    //declare manually objects which are parents of other objects
+    CelestialBody sun = new CelestialBody(CelestialConstants.Sun.X, CelestialConstants.Sun.Y, CelestialConstants.Sun.RADIUS, CelestialConstants.Sun.COLOR, 0, CelestialConstants.Sun.NAME, CelestialConstants.Sun.ORBITAL_SPEED, null);
+    CelestialBody earth = new CelestialBody(0, 0, CelestialConstants.Earth.RADIUS, CelestialConstants.Earth.COLOR, CelestialConstants.Earth.DISTANCE_FROM_PARENT, CelestialConstants.Earth.NAME, CelestialConstants.Earth.ORBITAL_SPEED, sun);//parent Sun
 
     public SolarSystemPanel() {
+        celestialBodies = new CelestialBody[] {
+                sun,
+                new CelestialBody(0, 0, CelestialConstants.Mercury.RADIUS, CelestialConstants.Mercury.COLOR, CelestialConstants.Mercury.DISTANCE_FROM_PARENT, CelestialConstants.Mercury.NAME, CelestialConstants.Mercury.ORBITAL_SPEED, sun),//parent Sun
+                new CelestialBody(0, 0, CelestialConstants.Venus.RADIUS, CelestialConstants.Venus.COLOR, CelestialConstants.Venus.DISTANCE_FROM_PARENT, CelestialConstants.Venus.NAME, CelestialConstants.Venus.ORBITAL_SPEED, sun),//parent Sun
+                earth,
+                new CelestialBody(0, 0, CelestialConstants.Mars.RADIUS, CelestialConstants.Mars.COLOR, CelestialConstants.Mars.DISTANCE_FROM_PARENT, CelestialConstants.Mars.NAME, CelestialConstants.Mars.ORBITAL_SPEED, sun),//parent Sun
+                new CelestialBody(0, 0, CelestialConstants.Jupiter.RADIUS, CelestialConstants.Jupiter.COLOR, CelestialConstants.Jupiter.DISTANCE_FROM_PARENT, CelestialConstants.Jupiter.NAME, CelestialConstants.Jupiter.ORBITAL_SPEED, sun),//parent Sun
+                new CelestialBody(0, 0, CelestialConstants.Saturn.RADIUS, CelestialConstants.Saturn.COLOR, CelestialConstants.Saturn.DISTANCE_FROM_PARENT, CelestialConstants.Saturn.NAME, CelestialConstants.Saturn.ORBITAL_SPEED, sun),//parent Sun
+                new CelestialBody(0, 0, CelestialConstants.Uranus.RADIUS, CelestialConstants.Uranus.COLOR, CelestialConstants.Uranus.DISTANCE_FROM_PARENT, CelestialConstants.Uranus.NAME, CelestialConstants.Uranus.ORBITAL_SPEED, sun),//parent Sun
+                new CelestialBody(0, 0, CelestialConstants.Neptune.RADIUS, CelestialConstants.Neptune.COLOR, CelestialConstants.Neptune.DISTANCE_FROM_PARENT, CelestialConstants.Neptune.NAME, CelestialConstants.Neptune.ORBITAL_SPEED, sun),//parent Sun
+                new CelestialBody(0, 0, CelestialConstants.Moon.RADIUS, CelestialConstants.Moon.COLOR, CelestialConstants.Moon.DISTANCE_FROM_PARENT, CelestialConstants.Moon.NAME, CelestialConstants.Moon.ORBITAL_SPEED, earth)//parent Earth
+        };
 
         // Set the background color to black
         setBackground(Color.BLACK);
@@ -80,9 +75,9 @@ public class SolarSystemPanel extends JPanel {
         initializeOffset();
     }
 
-    public void updateOrbitingBodyPosition(CelestialBody bodyOrbiting, CelestialBody bodyOrbited, double xOffset, double yOffset) {
-        bodyOrbiting.setX(bodyOrbited.getX() + (int) xOffset);
-        bodyOrbiting.setY(bodyOrbited.getY() + (int) yOffset);
+    public void updateOrbitingBodyPosition(CelestialBody bodyOrbiting, int orbitCenterX, int orbitCenterY, double xOffset, double yOffset) {
+        bodyOrbiting.setX(orbitCenterX + (int) xOffset);
+        bodyOrbiting.setY(orbitCenterY + (int) yOffset);
     }
 
     @Override
@@ -96,60 +91,11 @@ public class SolarSystemPanel extends JPanel {
         // Apply the offset (move the user's view)
         g2d.translate(offsetX, offsetY);
 
-        // Draw orbits
-        drawPredictedOrbit(g2d, earth, CelestialConstants.Moon.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Earth.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Mercury.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Venus.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Mars.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Jupiter.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Saturn.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Uranus.DISTANCE_FROM_PARENT);
-        drawPredictedOrbit(g2d, sun, CelestialConstants.Neptune.DISTANCE_FROM_PARENT);
-
-        // Draw bodies
-        drawCelestialBody(g2d, earth);
-        drawCelestialBody(g2d, moon);
-        drawCelestialBody(g2d, sun);
-        drawCelestialBody(g2d, mercury);
-        drawCelestialBody(g2d, venus);
-        drawCelestialBody(g2d, mars);
-        drawCelestialBody(g2d, jupiter);
-        drawCelestialBody(g2d, saturn);
-        drawCelestialBody(g2d, uranus);
-        drawCelestialBody(g2d, neptune);
-
-        // Draw small white cross at the center of the screen, always the same size
-        g2d.setTransform(new AffineTransform());
-        g.setColor(Color.WHITE);
-        int centerX = getRawWidth() / 2;
-        int centerY = getRawHeight() / 2;
-        g.drawLine(centerX - 1, centerY, centerX + 1, centerY);
-        g.drawLine(centerX, centerY - 1, centerX, centerY + 1);
-    }
-
-    // Draw orbit on which celestial body moves
-    private void drawPredictedOrbit(Graphics2D g2d, CelestialBody center, int orbitRadius) {
-        g2d.setColor(Color.WHITE);
-        g2d.drawOval(center.getX() - orbitRadius, center.getY() - orbitRadius, orbitRadius * 2, orbitRadius * 2);
-    }
-
-    private void drawCelestialBody(Graphics2D g2d, CelestialBody body) {
-        g2d.setColor(body.getColor());
-        Ellipse2D.Double shape = new Ellipse2D.Double(body.getX() - body.getRadius(), body.getY() - body.getRadius(),
-                body.getRadius() * 2, body.getRadius() * 2);
-        g2d.fill(shape);
-
-        g2d.setColor(Color.BLACK);
-        g2d.setFont(new Font("Arial", Font.PLAIN, body.getRadius()/2));
-        FontMetrics fm = g2d.getFontMetrics();
-        int textWidth = fm.stringWidth(body.getName());
-        int textHeight = fm.getHeight();
-
-        int textX = body.getX() - textWidth / 2;
-        int textY = body.getY() - textHeight / 2 + fm.getAscent();
-
-        g2d.drawString(body.getName(), textX, textY);
+        // Draw orbits and bodies
+        for (CelestialBody celestialBody : celestialBodies) {
+                celestialBody.drawPredictedOrbit(g2d, celestialBody);
+                celestialBody.drawCelestialBody(g2d);
+            }
     }
 
     public int getWidth() {
@@ -170,7 +116,7 @@ public class SolarSystemPanel extends JPanel {
 
 
     private void initializeOffset() {
-        offsetX = (sun.getX());
-        offsetY = (sun.getY()/2);
+        offsetX = (1700);
+        offsetY = (2500);
     }
 }
