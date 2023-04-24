@@ -1,5 +1,5 @@
 # Solar-System
-2D Solar System visualization in JAVA
+2D Solar System visualization in JAVA using Swing
 
 v1.00:
 
