@@ -1,4 +1,3 @@
-# Solar-System
 v1.2
 - Added all lacking planets of solar system
 - Changes in zoom in/out functionality
