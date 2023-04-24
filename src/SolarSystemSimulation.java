@@ -20,11 +20,11 @@ public class SolarSystemSimulation {
                 for (int i = 1; i < panel.celestialBodies.length; i++) {
                     angles[i] += panel.celestialBodies[i].getOrbitalSpeed();
                     double angleRadians = Math.toRadians(angles[i]);
-                    panel.updateOrbitingBodyPosition(panel.celestialBodies[i], panel.celestialBodies[i].getOrbitCenterX(), panel.celestialBodies[i].getOrbitCenterY(), panel.celestialBodies[i].getDistanceFromParent() * Math.cos(angleRadians), panel.celestialBodies[i].getDistanceFromParent() * Math.sin(angleRadians));
+                    panel.updateOrbitingBodyPosition(panel.celestialBodies[i], panel.celestialBodies[i].getParent(), panel.celestialBodies[i].getDistanceFromParent() * Math.cos(angleRadians), panel.celestialBodies[i].getDistanceFromParent() * Math.sin(angleRadians));
                 }
                 panel.repaint();
             }
-                });
+        });
         timer.start();
     }
 }
