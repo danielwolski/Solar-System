@@ -6,7 +6,7 @@ public class CelestialBody {
     private int radius;
     private Color color;
     private String name;
-    private double orbital_speed;
+    private double orbitalSpeed;
     CelestialBody parentBody;
 
     public CelestialBody(int x, int y, int radius, Color color, int distanceFromParent, String name, double orbitalSpeed, CelestialBody parentBody) {
@@ -16,7 +16,7 @@ public class CelestialBody {
         this.color = color;
         this.distanceFromParent = distanceFromParent;
         this.name = name;
-        this.orbital_speed = orbital_speed;
+        this.orbitalSpeed = orbitalSpeed;
         this.parentBody = parentBody;
     }
 
@@ -86,12 +86,13 @@ public class CelestialBody {
     public void setName(String name) {
         this.name = name;
     }
-    public double getOrbitalSpeed() {return orbital_speed;}
-    public void setOrbitalSpeed() {this.orbital_speed = orbital_speed;}
+    public double getOrbitalSpeed() {return orbitalSpeed;}
+    public void setOrbitalSpeed() {this.orbitalSpeed = orbitalSpeed;}
     public int getDistanceFromParent() {
         return distanceFromParent;
     }
     public void setDistanceFromParent() {this.distanceFromParent = distanceFromParent;}
+
     public int getOrbitCenterX() {
         if (parentBody == null) {
             return 0;

@@ -16,7 +16,7 @@ public class SolarSystemPanel extends JPanel {
     private Point lastDragPoint;
     private int offsetX = 0;
     private int offsetY = 0;
-    private double zoomFactor = 0.08;
+    private double zoomFactor = 0.02;
     private double targetZoomFactor = zoomFactor;
     CelestialBody[] celestialBodies;
 
@@ -47,8 +47,12 @@ public class SolarSystemPanel extends JPanel {
             public void mouseWheelMoved(MouseWheelEvent e) {
                 double delta = 0.05 * e.getPreciseWheelRotation();
                 targetZoomFactor -= delta;
-                zoomFactor = targetZoomFactor;
-                repaint();
+                if (targetZoomFactor > 0.02) {
+                    zoomFactor = targetZoomFactor;
+                    repaint();
+                }
+                else
+                    targetZoomFactor += delta;
             }
         });
 
@@ -75,9 +79,9 @@ public class SolarSystemPanel extends JPanel {
         initializeOffset();
     }
 
-    public void updateOrbitingBodyPosition(CelestialBody bodyOrbiting, int orbitCenterX, int orbitCenterY, double xOffset, double yOffset) {
-        bodyOrbiting.setX(orbitCenterX + (int) xOffset);
-        bodyOrbiting.setY(orbitCenterY + (int) yOffset);
+    public void updateOrbitingBodyPosition(CelestialBody bodyOrbiting, CelestialBody bodyOrbited, double xOffset, double yOffset) {
+        bodyOrbiting.setX(bodyOrbited.getX() + (int) xOffset);
+        bodyOrbiting.setY(bodyOrbited.getY() + (int) yOffset);
     }
 
     @Override
