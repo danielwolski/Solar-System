@@ -35,3 +35,6 @@ v1.3
 - code restructurization - now less code, it's easier to add new bodies
 - improved zoom in/out - fixed bug caused by zooming out too far
 
+v1.4
+- add most important moons of planets in solar system: "Phobos, Deimos, Io, Europa, Ganymede, Calisto, Titan, Rhea, Iapetus, Dione, Titania, Oberon, Umbriel, Ariel, Miranda, Triton"
+
