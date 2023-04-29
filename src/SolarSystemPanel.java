@@ -1,18 +1,19 @@
+import images_.ImagePaths;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
 
 public class SolarSystemPanel extends JPanel {
+    private Image backgroundImage;
     private static final long serialVersionUID = 1L;
-
     private Point lastDragPoint;
     private int offsetX = 0;
     private int offsetY = 0;
@@ -58,9 +59,11 @@ public class SolarSystemPanel extends JPanel {
                 new CelestialBody(0, 0, CelestialConstants.Triton.RADIUS, CelestialConstants.Triton.COLOR, CelestialConstants.Triton.DISTANCE_FROM_PARENT, CelestialConstants.Triton.NAME, CelestialConstants.Triton.ORBITAL_SPEED, neptune)
         };
 
-        // Set the background color to black
-        setBackground(Color.BLACK);
-
+        try {
+            backgroundImage = ImageIO.read(new File(ImagePaths.background));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // Zooming in and out
         addMouseWheelListener(new MouseWheelListener() {
             @Override
@@ -109,6 +112,9 @@ public class SolarSystemPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
+        // Draw image
+        g2d.drawImage(backgroundImage, 0, 0, getRawWidth(), getRawHeight(), this);
+
         // Apply zoom factor
         g2d.scale(zoomFactor, zoomFactor);
 
@@ -117,10 +123,11 @@ public class SolarSystemPanel extends JPanel {
 
         // Draw orbits and bodies
         for (CelestialBody celestialBody : celestialBodies) {
-                celestialBody.drawPredictedOrbit(g2d, celestialBody);
-                celestialBody.drawCelestialBody(g2d);
-            }
+            celestialBody.drawPredictedOrbit(g2d, celestialBody);
+            celestialBody.drawCelestialBody(g2d);
+        }
     }
+
 
     public int getWidth() {
         return (int) (super.getWidth() / zoomFactor);
