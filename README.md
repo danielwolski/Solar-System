@@ -1,2 +1,2 @@
 v1.41
-- add backround image of Milky Way
+- add background image of Milky Way
