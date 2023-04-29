@@ -38,3 +38,5 @@ v1.3
 v1.4
 - add most important moons of planets in solar system: "Phobos, Deimos, Io, Europa, Ganymede, Calisto, Titan, Rhea, Iapetus, Dione, Titania, Oberon, Umbriel, Ariel, Miranda, Triton"
 
+v1.41
+- add backround image of Milky Way
