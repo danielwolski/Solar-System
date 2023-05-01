@@ -1,5 +1,9 @@
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class CelestialBody {
     private int x, y, distanceFromParent;
@@ -7,9 +11,11 @@ public class CelestialBody {
     private Color color;
     private String name;
     private double orbitalSpeed;
+
+    private Image image;
     CelestialBody parentBody;
 
-    public CelestialBody(int x, int y, int radius, Color color, int distanceFromParent, String name, double orbitalSpeed, CelestialBody parentBody) {
+    public CelestialBody(int x, int y, int radius, Color color, int distanceFromParent, String name, double orbitalSpeed, CelestialBody parentBody, String imagePath) {
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -18,17 +24,24 @@ public class CelestialBody {
         this.name = name;
         this.orbitalSpeed = orbitalSpeed;
         this.parentBody = parentBody;
+
+        try {
+            this.image = ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void drawCelestialBody(Graphics2D g2d) {
-        g2d.setColor(this.color); // Add this line to set the color
+        int imgWidth = this.getRadius() * 2;
+        int imgHeight = this.getRadius() * 2;
+        int imgX = this.getX() - this.getRadius();
+        int imgY = this.getY() - this.getRadius();
 
-        Ellipse2D.Double shape = new Ellipse2D.Double(this.getX() - this.getRadius(), this.getY() - this.getRadius(),
-                this.getRadius() * 2, this.getRadius() * 2);
-        g2d.fill(shape);
+        g2d.drawImage(this.image, imgX, imgY, imgWidth, imgHeight, null);
 
         g2d.setColor(Color.BLACK);
-        g2d.setFont(new Font("Arial", Font.PLAIN, this.getRadius()/2));
+        g2d.setFont(new Font("Arial", Font.PLAIN, this.getRadius() / 2));
         FontMetrics fm = g2d.getFontMetrics();
         int textWidth = fm.stringWidth(this.getName());
         int textHeight = fm.getHeight();
