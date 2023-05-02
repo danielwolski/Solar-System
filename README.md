@@ -43,3 +43,6 @@ v1.41
 
 v1.42
 - add Sun and Jupiter images from Wikimedia Commons
+
+v1.43
+- add Earth, Moon, Mars, Uranus and Neptun images from Wikimedia Commons

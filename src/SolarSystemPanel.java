@@ -23,11 +23,11 @@ public class SolarSystemPanel extends JPanel {
 
     //declare manually objects which are parents of other objects
     CelestialBody sun = new CelestialBody(CelestialConstants.Sun.X, CelestialConstants.Sun.Y, CelestialConstants.Sun.RADIUS, CelestialConstants.Sun.COLOR, 0, CelestialConstants.Sun.NAME, CelestialConstants.Sun.ORBITAL_SPEED, null,ImagePaths.sunImage);
-    CelestialBody earth = new CelestialBody(0, 0, CelestialConstants.Earth.RADIUS, CelestialConstants.Earth.COLOR, CelestialConstants.Earth.DISTANCE_FROM_PARENT, CelestialConstants.Earth.NAME, CelestialConstants.Earth.ORBITAL_SPEED, sun,"");//parent Sun
-    CelestialBody mars = new CelestialBody(0, 0, CelestialConstants.Mars.RADIUS, CelestialConstants.Mars.COLOR, CelestialConstants.Mars.DISTANCE_FROM_PARENT, CelestialConstants.Mars.NAME, CelestialConstants.Mars.ORBITAL_SPEED, sun,"");
+    CelestialBody earth = new CelestialBody(0, 0, CelestialConstants.Earth.RADIUS, CelestialConstants.Earth.COLOR, CelestialConstants.Earth.DISTANCE_FROM_PARENT, CelestialConstants.Earth.NAME, CelestialConstants.Earth.ORBITAL_SPEED, sun,ImagePaths.earthImage);//parent Sun
+    CelestialBody mars = new CelestialBody(0, 0, CelestialConstants.Mars.RADIUS, CelestialConstants.Mars.COLOR, CelestialConstants.Mars.DISTANCE_FROM_PARENT, CelestialConstants.Mars.NAME, CelestialConstants.Mars.ORBITAL_SPEED, sun,ImagePaths.marsImage);
     CelestialBody jupiter = new CelestialBody(0, 0, CelestialConstants.Jupiter.RADIUS, CelestialConstants.Jupiter.COLOR, CelestialConstants.Jupiter.DISTANCE_FROM_PARENT, CelestialConstants.Jupiter.NAME, CelestialConstants.Jupiter.ORBITAL_SPEED, sun,ImagePaths.jupiterImage);
-    CelestialBody saturn = new CelestialBody(0, 0, CelestialConstants.Saturn.RADIUS, CelestialConstants.Saturn.COLOR, CelestialConstants.Saturn.DISTANCE_FROM_PARENT, CelestialConstants.Saturn.NAME, CelestialConstants.Saturn.ORBITAL_SPEED, sun,"");
-    CelestialBody uranus = new CelestialBody(0, 0, CelestialConstants.Uranus.RADIUS, CelestialConstants.Uranus.COLOR, CelestialConstants.Uranus.DISTANCE_FROM_PARENT, CelestialConstants.Uranus.NAME, CelestialConstants.Uranus.ORBITAL_SPEED, sun,"");
+    CelestialBody saturn = new CelestialBody(0, 0, CelestialConstants.Saturn.RADIUS, CelestialConstants.Saturn.COLOR, CelestialConstants.Saturn.DISTANCE_FROM_PARENT, CelestialConstants.Saturn.NAME, CelestialConstants.Saturn.ORBITAL_SPEED, sun,ImagePaths.saturnImage);
+    CelestialBody uranus = new CelestialBody(0, 0, CelestialConstants.Uranus.RADIUS, CelestialConstants.Uranus.COLOR, CelestialConstants.Uranus.DISTANCE_FROM_PARENT, CelestialConstants.Uranus.NAME, CelestialConstants.Uranus.ORBITAL_SPEED, sun,ImagePaths.uranusImage);
     CelestialBody neptune = new CelestialBody(0, 0, CelestialConstants.Neptune.RADIUS, CelestialConstants.Neptune.COLOR, CelestialConstants.Neptune.DISTANCE_FROM_PARENT, CelestialConstants.Neptune.NAME, CelestialConstants.Neptune.ORBITAL_SPEED, sun,"");
     public SolarSystemPanel() {
         celestialBodies = new CelestialBody[] {
@@ -40,7 +40,7 @@ public class SolarSystemPanel extends JPanel {
                 saturn,
                 uranus,
                 neptune,
-                new CelestialBody(0, 0, CelestialConstants.Moon.RADIUS, CelestialConstants.Moon.COLOR, CelestialConstants.Moon.DISTANCE_FROM_PARENT, CelestialConstants.Moon.NAME, CelestialConstants.Moon.ORBITAL_SPEED, earth,""),
+                new CelestialBody(0, 0, CelestialConstants.Moon.RADIUS, CelestialConstants.Moon.COLOR, CelestialConstants.Moon.DISTANCE_FROM_PARENT, CelestialConstants.Moon.NAME, CelestialConstants.Moon.ORBITAL_SPEED, earth,ImagePaths.moonImage),
                 new CelestialBody(0, 0, CelestialConstants.Phobos.RADIUS, CelestialConstants.Phobos.COLOR, CelestialConstants.Phobos.DISTANCE_FROM_PARENT, CelestialConstants.Phobos.NAME, CelestialConstants.Phobos.ORBITAL_SPEED, mars,""),
                 new CelestialBody(0, 0, CelestialConstants.Deimos.RADIUS, CelestialConstants.Deimos.COLOR, CelestialConstants.Deimos.DISTANCE_FROM_PARENT, CelestialConstants.Deimos.NAME, CelestialConstants.Deimos.ORBITAL_SPEED, mars,""),
                 new CelestialBody(0, 0, CelestialConstants.Io.RADIUS, CelestialConstants.Io.COLOR, CelestialConstants.Io.DISTANCE_FROM_PARENT, CelestialConstants.Io.NAME, CelestialConstants.Io.ORBITAL_SPEED, jupiter,""),
