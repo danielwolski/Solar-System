@@ -46,3 +46,6 @@ v1.42
 
 v1.43
 - add Earth, Moon, Mars, Uranus and Neptun images from Wikimedia Commons
+
+v1.44
+- adjusted zooming properties and celestial bodies constants
