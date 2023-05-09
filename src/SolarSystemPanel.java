@@ -10,25 +10,36 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * SolarSystemPanel is a custom JPanel that simulates and visualizes the solar system.
+ * It handles the creation of celestial bodies, and provides functionality for zooming and panning the view.
+ */
 public class SolarSystemPanel extends JPanel {
+
+    // various variables needed for the simulation and visualization
     private Image backgroundImage;
     private static final long serialVersionUID = 1L;
     private Point lastDragPoint;
     private int offsetX = 0;
     private int offsetY = 0;
-    private double zoomFactor = 0.001;
+    private double zoomFactor = 0.0001;
     private double targetZoomFactor = zoomFactor;
+    private double deltaVal = 0.005;
     CelestialBody[] celestialBodies;
 
-    //declare manually objects which are parents of other objects
+    //declare objects which are parents of other objects
     CelestialBody sun = new CelestialBody(CelestialConstants.Sun.X, CelestialConstants.Sun.Y, CelestialConstants.Sun.RADIUS, CelestialConstants.Sun.COLOR, 0, CelestialConstants.Sun.NAME, CelestialConstants.Sun.ORBITAL_SPEED, null,ImagePaths.sunImage);
     CelestialBody earth = new CelestialBody(0, 0, CelestialConstants.Earth.RADIUS, CelestialConstants.Earth.COLOR, CelestialConstants.Earth.DISTANCE_FROM_PARENT, CelestialConstants.Earth.NAME, CelestialConstants.Earth.ORBITAL_SPEED, sun,ImagePaths.earthImage);//parent Sun
     CelestialBody mars = new CelestialBody(0, 0, CelestialConstants.Mars.RADIUS, CelestialConstants.Mars.COLOR, CelestialConstants.Mars.DISTANCE_FROM_PARENT, CelestialConstants.Mars.NAME, CelestialConstants.Mars.ORBITAL_SPEED, sun,ImagePaths.marsImage);
     CelestialBody jupiter = new CelestialBody(0, 0, CelestialConstants.Jupiter.RADIUS, CelestialConstants.Jupiter.COLOR, CelestialConstants.Jupiter.DISTANCE_FROM_PARENT, CelestialConstants.Jupiter.NAME, CelestialConstants.Jupiter.ORBITAL_SPEED, sun,ImagePaths.jupiterImage);
     CelestialBody saturn = new CelestialBody(0, 0, CelestialConstants.Saturn.RADIUS, CelestialConstants.Saturn.COLOR, CelestialConstants.Saturn.DISTANCE_FROM_PARENT, CelestialConstants.Saturn.NAME, CelestialConstants.Saturn.ORBITAL_SPEED, sun,ImagePaths.saturnImage);
     CelestialBody uranus = new CelestialBody(0, 0, CelestialConstants.Uranus.RADIUS, CelestialConstants.Uranus.COLOR, CelestialConstants.Uranus.DISTANCE_FROM_PARENT, CelestialConstants.Uranus.NAME, CelestialConstants.Uranus.ORBITAL_SPEED, sun,ImagePaths.uranusImage);
-    CelestialBody neptune = new CelestialBody(0, 0, CelestialConstants.Neptune.RADIUS, CelestialConstants.Neptune.COLOR, CelestialConstants.Neptune.DISTANCE_FROM_PARENT, CelestialConstants.Neptune.NAME, CelestialConstants.Neptune.ORBITAL_SPEED, sun,"");
+    CelestialBody neptune = new CelestialBody(0, 0, CelestialConstants.Neptune.RADIUS, CelestialConstants.Neptune.COLOR, CelestialConstants.Neptune.DISTANCE_FROM_PARENT, CelestialConstants.Neptune.NAME, CelestialConstants.Neptune.ORBITAL_SPEED, sun,ImagePaths.neptunImage);
+
+    /**
+     * Constructor for the SolarSystemPanel.
+     * Initializes celestial bodies and sets up necessary listeners for user interaction.
+     */
     public SolarSystemPanel() {
         celestialBodies = new CelestialBody[] {
                 sun,
@@ -68,9 +79,14 @@ public class SolarSystemPanel extends JPanel {
         addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
-                double delta = 0.005 * e.getPreciseWheelRotation();
+                double delta = deltaVal * e.getPreciseWheelRotation();
                 targetZoomFactor -= delta;
-                if (targetZoomFactor > 0.001) {
+
+                //System.out.println(zoomFactor);
+                //System.out.println(targetZoomFactor);
+                //System.out.println("\n");
+
+                if (targetZoomFactor > 0.0001) {
                     zoomFactor = targetZoomFactor;
                     repaint();
                 }
@@ -102,11 +118,22 @@ public class SolarSystemPanel extends JPanel {
         initializeOffset();
     }
 
+    /**
+     * Update the position of a body orbiting another body in the solar system.
+     * @param bodyOrbiting the celestial body that is orbiting.
+     * @param bodyOrbited the celestial body that is being orbited.
+     * @param xOffset the x offset for the orbiting body.
+     * @param yOffset the y offset for the orbiting body.
+     */
     public void updateOrbitingBodyPosition(CelestialBody bodyOrbiting, CelestialBody bodyOrbited, double xOffset, double yOffset) {
         bodyOrbiting.setX(bodyOrbited.getX() + (int) xOffset);
         bodyOrbiting.setY(bodyOrbited.getY() + (int) yOffset);
     }
 
+    /**
+     * Overridden method for painting components. Draws the celestial bodies and applies transformations for zooming and panning.
+     * @param g the Graphics object to protect.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -129,6 +156,9 @@ public class SolarSystemPanel extends JPanel {
     }
 
 
+    /**
+     * Get methods and private method to initialize the offset.
+     */
     public int getWidth() {
         return (int) (super.getWidth() / zoomFactor);
     }
