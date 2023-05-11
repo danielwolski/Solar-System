@@ -6,7 +6,7 @@
 
 
 ## How to install and run
--
+- variable "pathBeg" located in ImagePaths.java should point to the images_folder as in this example: "C:\\Users\\Username\\Desktop\\Solar-System-WIP-\\src\\images_"
 
 ## Manual
 - Move the view - user needs to click and hold the mouse button, and then move the mouse cursor.
