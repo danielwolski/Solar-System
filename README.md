@@ -44,3 +44,4 @@ v1.4*
 - add background image of Milky Way from Wikimedia Commons
 - add Sun, Jupiter, Earth, Moon, Mars, Uranus and Neptun images from Wikimedia Commons
 - adjusted zooming properties and celestial bodies constants
+- add comments
