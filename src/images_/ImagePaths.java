@@ -11,5 +11,7 @@ public class ImagePaths {
     public static final String earthImage = pathBeg + "\\earth.png";
     public static final String moonImage = pathBeg + "\\moon.png";
     public static final String neptunImage = pathBeg + "\\neptun.png";
+    public static final String venusImage = pathBeg + "\\venus.png";
+    public static final String mercuryImage = pathBeg + "\\mercury.png";
 
 }
