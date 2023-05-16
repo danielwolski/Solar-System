@@ -44,7 +44,11 @@ public class CelestialBody {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+    * Draws a celestial body on the given Graphics2D object
+    * @param g2d the Graphics2d object do draw on
+    */
     public void drawCelestialBody(Graphics2D g2d) {
         int imgWidth = this.getRadius() * 2;
         int imgHeight = this.getRadius() * 2;
@@ -66,6 +70,11 @@ public class CelestialBody {
         g2d.drawString(this.getName(), textX, textY);
     }
 
+    /**
+    * Draws the predicted orbit for a celestial body on the given Graphics2D object.
+    * @param g2d The Graphics2D object to draw on.
+    * @param celestialBody The celestial body for which to draw the predicted orbit.
+    */
     public void drawPredictedOrbit(Graphics2D g2d, CelestialBody celestialBody) {
         if (celestialBody.getParent() == null) {
             // Don't draw orbit for the Sun as it has no parent
