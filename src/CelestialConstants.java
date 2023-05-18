@@ -1,5 +1,8 @@
 import java.awt.Color;
 
+/**
+ * Class CelestialConstants contains defined parameters for most of the celestial objects in Solar system
+ */
 public class CelestialConstants {
 
     private static final int SLOWDOWN_FACTOR = 150;

@@ -1,5 +1,8 @@
 package images_;
 
+/**
+ * Class ImagePaths contains paths to images of selected celestial bodies in Solar system
+ */
 public class ImagePaths {
     public static final String pathBeg = "C:\\Users\\logix\\Desktop\\solar\\Solar-System-WIP-\\src\\images_";//change only this!
     public static final String background = pathBeg + "\\background.jpg";
@@ -10,8 +13,10 @@ public class ImagePaths {
     public static final String marsImage = pathBeg + "\\mars.png";
     public static final String earthImage = pathBeg + "\\earth.png";
     public static final String moonImage = pathBeg + "\\moon.png";
-    public static final String neptunImage = pathBeg + "\\neptun.png";
+    public static final String neptuneImage = pathBeg + "\\neptune.png";
     public static final String venusImage = pathBeg + "\\venus.png";
     public static final String mercuryImage = pathBeg + "\\mercury.png";
+    public static final String phobosImage = pathBeg + "\\phobos.png";
+    public static final String deimosImage = pathBeg + "\\deimos.png";
 
 }
