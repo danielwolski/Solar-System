@@ -92,30 +92,37 @@ public class CelestialBody {
     }
 
 
+    /**
+    * Getters and setters
+    */
     public int getX() {
         return x;
     }
     public void setX(int x) {
         this.x = x;
     }
+    
     public int getY() {
         return y;
     }
     public void setY(int y) {
         this.y = y;
     }
+    
     public int getRadius() {
         return radius;
     }
     public void setRadius(int radius) {
         this.radius = radius;
     }
+    
     public Color getColor() {
         return color;
     }
     public void setColor(Color color) {
         this.color = color;
     }
+    
     public String getName() {
         return name;
     }
@@ -124,9 +131,8 @@ public class CelestialBody {
     }
     public double getOrbitalSpeed() {return orbitalSpeed;}
     public void setOrbitalSpeed() {this.orbitalSpeed = orbitalSpeed;}
-    public int getDistanceFromParent() {
-        return distanceFromParent;
-    }
+    
+    public int getDistanceFromParent() { return distanceFromParent;}
     public void setDistanceFromParent() {this.distanceFromParent = distanceFromParent;}
 
     public int getOrbitCenterX() {
@@ -135,14 +141,12 @@ public class CelestialBody {
         }
         return parentBody.getX();
     }
-
     public int getOrbitCenterY() {
         if (parentBody == null) {
             return 0;
         }
         return parentBody.getY();
     }
-
 
     public CelestialBody getParent(){
             return parentBody;
