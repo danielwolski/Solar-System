@@ -75,7 +75,12 @@ public class SolarSystemPanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Zooming in and out
+        
+        /**
+        * Adds a mouse wheel listener to enable zooming in and out.
+        * The zoom factor is adjusted based on the precise wheel rotation of the mouse.
+        * @param deltaVal the amount of change in zoom factor per wheel rotation
+        */
         addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
@@ -95,13 +100,24 @@ public class SolarSystemPanel extends JPanel {
             }
         });
 
-        //Dragging the view
+        /**
+        * Adds a mouse listener to enable dragging of the view.
+        * The starting point of the drag is stored for reference.
+        * @param e the mouse event indicating the button press
+        */
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 lastDragPoint = e.getPoint();
             }
         });
+        
+        /**
+        * Adds a mouse motion listener to handle dragging of the view.
+        * The offset values are adjusted based on the movement of the mouse
+        * and the current zoom factor. The view is repainted to reflect the new position.
+        * @param e the mouse event indicating the mouse movement
+        */
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
