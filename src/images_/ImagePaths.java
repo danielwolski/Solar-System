@@ -18,5 +18,5 @@ public class ImagePaths {
     public static final String mercuryImage = pathBeg + "\\mercury.png";
     public static final String phobosImage = pathBeg + "\\phobos.png";
     public static final String deimosImage = pathBeg + "\\deimos.png";
-
+    public static final String ioImage = pathBeg + "\\io.png";
 }
