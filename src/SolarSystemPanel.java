@@ -87,10 +87,6 @@ public class SolarSystemPanel extends JPanel {
                 double delta = deltaVal * e.getPreciseWheelRotation();
                 targetZoomFactor -= delta;
 
-                //System.out.println(zoomFactor);
-                //System.out.println(targetZoomFactor);
-                //System.out.println("\n");
-
                 if (targetZoomFactor > 0.0001) {
                     zoomFactor = targetZoomFactor;
                     repaint();

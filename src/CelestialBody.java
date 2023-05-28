@@ -57,15 +57,18 @@ public class CelestialBody {
 
         g2d.drawImage(this.image, imgX, imgY, imgWidth, imgHeight, null);
 
+        int size = this.getRadius() / 2;
+        if (size < CelestialConstants.MINIMAL_FONT_SIZE)
+            size = CelestialConstants.MINIMAL_FONT_SIZE;
+
         g2d.setColor(Color.WHITE);
-        g2d.setFont(new Font("Arial", Font.PLAIN, this.getRadius() / 2));
+        g2d.setFont(new Font("Arial", Font.PLAIN, size));
         FontMetrics fm = g2d.getFontMetrics();
         int textWidth = fm.stringWidth(this.getName());
         int textHeight = fm.getHeight();
 
         int textX = this.getX() - textWidth / 2;
-        //int textY = this.getY() - textHeight / 2 + fm.getAscent();
-        int textY = this.getY() - textHeight / 2 - 2 * fm.getAscent();
+        int textY = this.getY() - textHeight / 2 - fm.getAscent();
 
         g2d.drawString(this.getName(), textX, textY);
     }

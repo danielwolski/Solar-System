@@ -7,6 +7,7 @@ public class CelestialConstants {
 
     private static final int SLOWDOWN_FACTOR = 150;
     private static final int LOWER_DISTANCE_FACTOR = 2;
+    public static final int MINIMAL_FONT_SIZE = 600;
 
 
     public static class Sun {
@@ -95,7 +96,7 @@ public class CelestialConstants {
         public static final Color COLOR = new Color(200, 200, 200); // Light Gray
         public static final int DISTANCE_FROM_PARENT = 1480*LOWER_DISTANCE_FACTOR;
         public static final String NAME = "Phobos";
-        public static final double ORBITAL_SPEED = 2.14/SLOWDOWN_FACTOR;
+        public static final double ORBITAL_SPEED = 10.14/SLOWDOWN_FACTOR;
     }
 
     public static class Deimos {
