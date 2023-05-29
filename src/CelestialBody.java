@@ -9,7 +9,6 @@ import javax.imageio.ImageIO;
 public class CelestialBody {
     private int x, y, distanceFromParent;
     private int radius;
-    private Color color;
     private String name;
     private double orbitalSpeed;
 
@@ -21,18 +20,16 @@ public class CelestialBody {
      * @param x the x-coordinate of the celestial body
      * @param y the y-coordinate of the celestial body
      * @param radius the radius of the celestial body
-     * @param color the color of the celestial body
      * @param distanceFromParent the distance of the celestial body from its parent body
      * @param name the name of the celestial body
      * @param orbitalSpeed the orbital speed of the celestial body - it represents how fast it orbits around its parent body
      * @param parentBody the parent body - body it orbits around
      * @param imagePath - path to the image representing body
      */
-    public CelestialBody(int x, int y, int radius, Color color, int distanceFromParent, String name, double orbitalSpeed, CelestialBody parentBody, String imagePath) {
+    public CelestialBody(int x, int y, int radius, int distanceFromParent, String name, double orbitalSpeed, CelestialBody parentBody, String imagePath) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = color;
         this.distanceFromParent = distanceFromParent;
         this.name = name;
         this.orbitalSpeed = orbitalSpeed;
@@ -119,19 +116,13 @@ public class CelestialBody {
         this.radius = radius;
     }
     
-    public Color getColor() {
-        return color;
-    }
-    public void setColor(Color color) {
-        this.color = color;
-    }
-    
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+
     public double getOrbitalSpeed() {return orbitalSpeed;}
     public void setOrbitalSpeed() {this.orbitalSpeed = orbitalSpeed;}
     
